@@ -1,0 +1,601 @@
+
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anujin Ulziidelger</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #c9343b;
+  --bg-alt: #b72e35;
+  --dark: #1a1a1a;
+  --text: #ffeaea;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Arial Rounded MT Bold", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* FLOAT + WIGGLE */
+@keyframes float {
+  0%   { transform: translateY(0) rotate(var(--r,0deg)); }
+  50%  { transform: translateY(-18px) rotate(var(--r,0deg)); }
+  100% { transform: translateY(0) rotate(var(--r,0deg)); }
+}
+
+@keyframes wiggle {
+  0%   { transform: rotate(var(--r,0deg)); }
+  50%  { transform: rotate(calc(var(--r,0deg) + 3deg)); }
+  100% { transform: rotate(var(--r,0deg)); }
+}
+
+.float {
+  animation:
+    float var(--t,7s) ease-in-out infinite,
+    wiggle calc(var(--t,7s) * 0.6) ease-in-out infinite;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.title-wrap {
+  text-align: center;
+}
+
+.title {
+  font-family: "Pacifico", cursive;
+  font-size: clamp(2rem, 10vw, 14rem);
+  line-height: 1;
+  text-shadow: 3px 3px 0 #fff, 6px 6px 0 #b6402e;
+}
+
+.subtitle {
+  margin-top: 20px;
+  padding: 14px 30px;
+  border: 2px solid var(--dark);
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.buttons {
+  margin-top: 36px;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pill {
+  padding: 12px 26px;
+  border: 2px solid var(--dark);
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.pill:hover {
+  background: var(--dark);
+}
+
+/* HERO STICKERS */
+.item {
+  position: absolute;
+  width: 140px;
+  filter: drop-shadow(0 14px 35px rgba(0,0,0,0.3));
+}
+
+.i1 { top: 10%; left: 6%; --r:-4deg; }
+.i2 { top: 12%; right: 8%; --r:5deg; }
+.i3 { bottom: 14%; left: 12%; --r:3deg; }
+.i4 { bottom: 9%; right: 18%; --r:-6deg; }
+.i5 { 
+  top: 32%; 
+  left: 4%; 
+  --r: -5deg; 
+}
+
+.i6 { 
+  top: 38%; 
+  right: 4%; 
+  --r: 6deg; 
+}
+
+.i7 { 
+  top: 6%; 
+  left: 22%; 
+  --r: -3deg; 
+}
+.i8 { top: 20%; right: 12%; --r:-6deg; }
+/* SECTIONS */
+section {
+  padding: 140px 8vw;
+}
+.i9 { bottom: 1%; right: 5%; --r:-4deg; }
+.i10 { top: 4%; right: 30%; --r:5deg; }
+.i11 { bottom: 5%; left: 25%; --r:3deg; }
+
+
+
+.section-title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+/* ABOUT */
+.about {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+}
+
+.collage {
+  position: relative;
+  min-height: 480px;
+}
+
+.polaroid {
+  position: absolute;
+  width: 180px;
+  background: #fff;
+  padding: 12px 12px 30px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+}
+
+.p1 { top: 0; left: 40px; --r:-4deg; }
+.p2 { top: 200px; left: 0; --r:6deg; }
+.p3 { top: 300px; left: 110px; --r:-2deg; }
+
+/* PORTFOLIO */
+/* ================= PORTFOLIO ================= */
+
+.portfolio {
+  padding: 120px 0;
+  background: #b94141;
+  overflow: hidden;
+}
+
+.carousel {
+  width: 100%;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: scroll 28s linear infinite;
+}
+
+/* FRAME CARD (CONSISTENT HEIGHT) */
+.card {
+  width: 240px;
+  height: 340px;                /* 🔑 force same height */
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.25);
+  flex-shrink: 0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* ← Canva “Fill” */
+  object-position: center;
+  display: block;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.35);
+}
+
+/* Infinite scroll */
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .card {
+    width: 190px;
+    height: 270px;
+  }
+}
+
+/* ================= CAROUSEL ================= */
+
+.carousel {
+  width: 100%;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+
+/* ================= CANVA FRAME ================= */
+
+.card {
+  min-width: 220px;
+  aspect-ratio: 4 / 5;           /* 🔥 FRAME SHAPE */
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+
+/* IMAGE BEHAVES LIKE CANVA "FILL" */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .card {
+    min-width: 180px;
+    aspect-ratio: 3 / 4;
+  }
+
+  .track {
+    gap: 16px;
+  }
+}
+
+
+/* SERVICES */
+.services {
+  background: #fffef5;
+  color: var(--dark);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap: 32px;
+}
+
+.service-card {
+  background: #ffeaea;
+  padding: 32px;
+  border-radius: 20px;
+  border: 2px solid var(--bg);
+}
+
+/* CONTACT */
+.contact {
+  background: var(--bg-alt);
+}
+
+.contact-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.about {
+  padding: 180px 10vw; /* more breathing room */
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; /* text gets priority */
+  align-items: center;
+  gap: 120px;
+}
+.about-text p {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  max-width: 620px;
+  opacity: 0.95;
+  margin-bottom: 22px;
+}
+
+
+@media (max-width: 900px) {
+  .about { grid-template-columns: 1fr; }
+  .contact-inner { grid-template-columns: 1fr; text-align: center; }
+}
+@media (max-width: 900px) {
+  .about {
+    grid-template-columns: 1fr;
+    gap: 80px;
+    padding: 140px 8vw;
+  }
+
+  .about h2 {
+    text-align: center;
+  }
+
+  .about-text p {
+    max-width: 100%;
+  }
+}
+.frame {
+  background: #fff;
+  padding: 16px 16px 42px; /* thicker bottom = polaroid */
+  border-radius: 6px;
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.35),
+    inset 0 0 0 1px rgba(0,0,0,0.05);
+}
+
+.frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.i1 { width: 210px; }
+.i2 { width: 225px; }
+.i3 { width: 215px; }
+.i4 { width: 235px; }
+.i5 { width: 220px; }
+.i6 { width: 205px; }
+.i7 { width: 195px; z-index: 3; }
+.i8 { width: 225px; }
+.i9 { width: 215px; }
+.i10 { width: 235px; }
+.i11 { width: 220px; }
+
+
+.pill {
+  position: relative;
+  padding: 14px 32px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--dark);
+  background: #ffeaea;
+  border: 2px solid var(--dark);
+  cursor: pointer;
+
+  /* depth */
+  box-shadow:
+    0 6px 0 var(--dark),
+    0 14px 30px rgba(0,0,0,0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+.pill:hover {
+  transform: translateY(-3px);
+  background: var(--dark);
+  color: #ffeaea;
+
+  box-shadow:
+    0 9px 0 var(--dark),
+    0 18px 35px rgba(0,0,0,0.35);
+}
+.track {
+  display: flex;
+  gap: 1.5rem;              /* tighter spacing */
+  width: max-content;
+  animation: scroll 25s linear infinite;
+}
+
+.card {
+  min-width: 220px;         /* ↓ smaller cards */
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.25);
+}
+@media (max-width: 768px) {
+  .card {
+    min-width: 180px;
+  }
+
+  .track {
+    gap: 1rem;
+  }
+}
+.i4 {
+  width: clamp(200px, 22vw, 280px);
+}
+
+.i8 {
+  width: clamp(220px, 24vw, 300px);
+}
+
+.card {
+  width: 240px;
+  aspect-ratio: 4 / 5;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.25);
+  flex-shrink: 0;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="lips.png" class="item i1 float">
+  <img src="flower.png" class="item i2 float">
+  <img src="golf.png" class="item i3 float">
+  <img src="maze.png" class="item i4 float">
+  <img src="flower.png" class="item i5 float">
+  <img src="tovch.png" class="item i6 float">
+  <img src="doll.png" class="item i7 float">
+  <img src="morin.png" class="item i8 float">
+  <img src="girl1.png" class="item i9 float">
+  <img src="cherry.png" class="item i10 float">
+  <img src="hello.png" class="item i11 float">
+
+  <div class="title-wrap">
+    <div class="title">Anujin<br>Ulziidelger.</div>
+    <br>
+    <br>
+    <div class="buttons">
+      <a href="#about" class="pill">about me</a>
+      <a href="#portfolio" class="pill">my work</a>
+      <a href="#contact" class="pill">let’s collab</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-text">
+    <h2>about me ★</h2>
+
+    <p>
+  My name is Anujin Ulziidelger, and my work sits at the intersection of cognitive development and cultural context. I am interested in how people think, but more specifically, how culture shapes the way thinking develops, how attention is trained, how problem-solving is taught, and how knowledge is passed on across generations.
+</p>
+
+<p>
+  I completed my secondary education at the 21st School of Mongolia and later at Kentridge High School in the United States. Moving between these two systems made one thing clear to me early on: learning is never culturally neutral. The same cognitive skills are valued, trained, and expressed differently depending on history, tradition, and social structure. That realization became the foundation of my academic and project-based work.
+</p>
+
+<p>
+  I am the Founder and President of MindMaze, an educational initiative that integrates traditional puzzle-based practices with contemporary cognitive science. Through MindMaze, I established and equipped puzzle-learning spaces in five schools, engaging more than 3,600 elementary and middle school students. These spaces use culturally rooted mechanical puzzles not as nostalgia, but as cognitive tools to strengthen executive function, spatial reasoning, and sustained attention, while reinforcing the idea that cultural heritage can actively support modern learning.
+</p>
+
+<p>
+  Alongside this work, I authored a research study examining the effects of puzzle-based learning on executive function and cognitive performance. My research focuses on how tactile, culturally grounded learning interventions can enhance cognitive flexibility, planning, and focus, particularly in environments where digital learning dominates but does not always engage deeply.
+</p>
+
+<p>
+  In recognition of this work, I was selected as a TEDx Speaker, where I spoke about preserving cultural heritage through education and why cognition develops most meaningfully when learning extends beyond formal classrooms. My talk is expected to be published on the official TED Talks YouTube channel.
+</p>
+
+<p>
+  Beyond research, I am active in youth advocacy and international education. Through the East Asian Youth Network, I represented over 75,000 youth from East Asian Red Cross communities and moderated in-person youth conferences in Macau and Mongolia. In 2023, I was selected as a FLEX Capital City Representative and served as a Mongolian delegate at the U.S. Department of State’s Civic Education Selective Workshop, experiences that further shaped my interest in civic learning across cultures.
+</p>
+
+<p>
+  I am also an athlete. I competed as a varsity golf player at Kentridge High School and currently serve as a board member of the Mongolian Golf Association. Sports have reinforced my belief that cognition is not confined to classrooms; discipline, focus, and strategic thinking are learned through embodied experience as much as academic study.
+</p>
+
+  </div>
+
+  <div class="collage">
+    <div class="polaroid p1 float" style="--t:6s"><img src="yas.png"></div>
+    <div class="polaroid p2 float" style="--t:5.5s"><img src="https://picsum.photos/300?11"></div>
+    <div class="polaroid p3 float" style="--t:6.5s"><img src="anujin2.png"></div>
+  </div>
+</section>
+
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <h2 class="section-title">portfolio</h2>
+
+  <div class="carousel">
+    <div class="track">
+
+      <div class="card"><img src="red.jpg" alt=""></div>
+      <div class="card"><img src="mongol.jpg" alt=""></div>
+      <div class="card"><img src="anujin.png" alt=""></div>
+      <div class="card"><img src="medal.png" alt=""></div>
+      <div class="card"><img src="sports.jpg" alt=""></div>
+
+
+
+      <!-- duplicate for infinite scroll -->
+      <div class="card"><img src="red.jpg" alt=""></div>
+      <div class="card"><img src="mongol.jpg" alt=""></div>
+      <div class="card"><img src="anujin.png" alt=""></div>
+      <div class="card"><img src="medal.png" alt=""></div>
+      <div class="card"><img src="sports.jpg" alt=""></div>
+
+
+
+    </div>
+  </div>
+</section>
+
+
+<!-- SERVICES -->
+<section class="services">
+  <h2 class="section-title">what i can do</h2>
+  <div class="services-grid">
+    <div class="service-card">Content Creation</div>
+    <div class="service-card">Strategy & Planning</div>
+    <div class="service-card">Community Building</div>
+    <div class="service-card">Brand Amplification</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <img src="zahia.png" width="200" class="float">
+    <div>
+      <h2 class="section-title">let’s collaborate</h2>
+      <a href="mailto:cyberareej@gmail.com" class="pill">cyberareej@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
