@@ -1,25 +1,30 @@
 
-
-</body>
-</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Anujin Ulziidelger</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anujin</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
 <style>
+  
 :root {
-  --bg: #c9343b;
-  --bg-alt: #b72e35;
   --dark: #1a1a1a;
   --text: #ffeaea;
 }
 
 * { box-sizing: border-box; }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("paper.png") center / cover no-repeat;
+  opacity: 0.7;
+  z-index: -1;
+}
 
 body {
   margin: 0;
@@ -62,7 +67,7 @@ body {
 }
 
 .title {
-  font-family: "Pacifico", cursive;
+  font-family: "EB Garamond", serif;
   font-size: clamp(2rem, 10vw, 14rem);
   line-height: 1;
   text-shadow: 3px 3px 0 #fff, 6px 6px 0 #b6402e;
@@ -99,7 +104,7 @@ body {
 /* HERO STICKERS */
 .item {
   position: absolute;
-  width: 140px;
+  width: clamp(150px, 14vw, 190px);
   filter: drop-shadow(0 14px 35px rgba(0,0,0,0.3));
 }
 
@@ -132,6 +137,7 @@ section {
 .i9 { bottom: 1%; right: 5%; --r:-4deg; }
 .i10 { top: 4%; right: 30%; --r:5deg; }
 .i11 { bottom: 5%; left: 25%; --r:3deg; }
+.i12 { bottom: 40%; left: 20%; --r:3deg; }
 
 
 
@@ -143,27 +149,12 @@ section {
 
 /* ABOUT */
 .about {
+  color: var(--dark);
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: 80px;
 }
 
-.collage {
-  position: relative;
-  min-height: 480px;
-}
-
-.polaroid {
-  position: absolute;
-  width: 180px;
-  background: #fff;
-  padding: 12px 12px 30px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
-}
-
-.p1 { top: 0; left: 40px; --r:-4deg; }
-.p2 { top: 200px; left: 0; --r:6deg; }
-.p3 { top: 300px; left: 110px; --r:-2deg; }
 
 /* PORTFOLIO */
 /* ================= PORTFOLIO ================= */
@@ -205,6 +196,7 @@ section {
   object-position: center;
   display: block;
 }
+
 
 .card:hover {
   transform: translateY(-6px);
@@ -258,6 +250,73 @@ section {
   object-position: center;
   display: block;
 }
+
+/* background */
+.paper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* camera */
+.camera {
+  position: absolute;
+  top: 0;
+  left: 40px;
+  width: 320px;
+  z-index: 3;
+}
+
+/* camera photo */
+.camera-photo {
+  position: absolute;
+  top: 88px;     /* adjust */
+  left: 82px;    /* adjust */
+  width: 235px;
+  height: 175px;
+  object-fit: cover;
+  z-index: 2;
+}
+
+/* polaroid */
+.polaroid {
+  position: absolute;
+  top: 300px;
+  right: 20px;
+  width: 160px;
+  z-index: 3;
+}
+
+/* polaroid photos */
+.p1 {
+  position: absolute;
+  top: 330px;
+  right: 34px;
+  width: 132px;
+  height: 118px;
+  object-fit: cover;
+}
+
+.p2 {
+  position: absolute;
+  top: 460px;
+  right: 34px;
+  width: 132px;
+  height: 118px;
+  object-fit: cover;
+}
+
+.p3 {
+  position: absolute;
+  top: 590px;
+  right: 34px;
+  width: 132px;
+  height: 118px;
+  object-fit: cover;
+}
+
 
 /* ================= ANIMATION ================= */
 
@@ -366,7 +425,7 @@ section {
   height: auto;
 }
 .i1 { width: 210px; }
-.i2 { width: 225px; }
+.i2 { width: 105px; }
 .i3 { width: 215px; }
 .i4 { width: 235px; }
 .i5 { width: 220px; }
@@ -376,6 +435,7 @@ section {
 .i9 { width: 215px; }
 .i10 { width: 235px; }
 .i11 { width: 220px; }
+.i12 { width: 220px; }
 
 
 .pill {
@@ -471,34 +531,392 @@ section {
   height: 100%;
   object-fit: cover;
 }
+/* ================= TIMELINE SECTION ================= */
+
+.timeline-section {
+  padding: 160px 8vw;
+  background: #5e0717; /* dark backdrop like example */
+  color: #ffffff;
+}
+
+/* container */
+.timeline {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* vertical center line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background: #d6cd19;
+  transform: translateX(-50%);
+}
+
+/* timeline item */
+.timeline-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 140px;
+  position: relative;
+}
+
+/* left / right alignment */
+.timeline-item.left {
+  text-align: right;
+}
+
+.timeline-item.right {
+  text-align: left;
+}
+
+/* force image side */
+.timeline-item.left img {
+  grid-column: 2;
+}
+
+.timeline-item.right img {
+  grid-column: 1;
+}
+
+/* content box */
+.timeline-item .content {
+  max-width: 420px;
+}
+
+.timeline-item .year {
+  display: block;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  color: #6dff6d;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.timeline-item h3 {
+  font-size: 1.9rem;
+  margin: 0 0 10px;
+}
+
+.timeline-item p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  opacity: 0.85;
+}
+
+/* images */
+.timeline-item img {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.4);
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 900px) {
+
+  .timeline::before {
+    left: 28px;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+    text-align: left;
+    padding-left: 70px;
+    margin-bottom: 100px;
+  }
+
+  .timeline-item.left img,
+  .timeline-item.right img {
+    grid-column: auto;
+  }
+
+  .timeline-item img {
+    margin-top: 28px;
+    max-width: 100%;
+  }
+}
+/* ===== MODAL ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: #fffef5;
+  color: #1a1a1a;
+  max-width: 900px;
+  width: 90%;
+  padding: 48px;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+}
+
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-content h2 {
+  font-size: 2.6rem;
+  margin-bottom: 18px;
+}
+
+.modal-content p {
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+
+.modal-tldr {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .modal-tldr {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===== ROW CONTAINER ===== */
+.cards-row {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin: 80px auto;
+}
+
+/* ===== CARD ===== */
+.card {
+  width: 260px;              /* control size here */
+  aspect-ratio: 4 / 5;       /* nice portrait ratio */
+  border-radius: 20px;
+  overflow: hidden;
+
+  position: relative;
+  cursor: pointer;
+
+  box-shadow: 0 14px 36px rgba(0,0,0,0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.45);
+}
+
+/* ===== IMAGE (THIS FIXES EVERYTHING) ===== */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* 🔑 fills card */
+  object-position: center;
+  display: block;
+}
+
+/* ===== BUTTON ===== */
+.more-btn {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 10px 18px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.95);
+  color: #000;
+  border: none;
+  cursor: pointer;
+
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.card:hover .more-btn {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  .card {
+    width: 90%;
+  }
+
+  .more-btn {
+    opacity: 1;
+  }
+}
+.collage {
+  position: relative;
+  min-height: 480px;
+}
+
+.polaroid {
+  position: absolute;
+  width: 300px;
+  padding: 12px 12px 30px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+}
+
+.p1 { top: 0; left: 40px; --r:-4deg; }
+.p2 { top: 200px; left: 0; --r:6deg; }
+.p3 { top: 300px; left: 110px; --r:-2deg; }
+/* row layout */
+.cards-row.video-row {
+  display: flex;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+/* video cards */
+.video-card {
+  flex: 1;
+  height: 320px;              /* 🔥 adjust: 280–360px */
+  padding: 0;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #000;
+}
+
+/* make video fill the card */
+.video-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: inherit;
+}
+/*Project*/
+/* HERO */
+.project {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* HERO STICKERS */
+.item {
+  position: absolute;
+  width: clamp(150px, 14vw, 190px);
+  filter: drop-shadow(0 14px 35px rgba(0,0,0,0.3));
+}
+
+.i1 { top: 10%; left: 6%; --r:-4deg; }
+.i2 { top: 12%; right: 8%; --r:5deg; }
+.i3 { bottom: 14%; left: 6%; --r:3deg; }
+.i4 { bottom: 1%; right: 18%; --r:-6deg; }
+.i5 { 
+  top: 32%; 
+  left: 4%; 
+  --r: -5deg; 
+}
+
+.i6 { 
+  top: 38%; 
+  right: 4%; 
+  --r: 6deg; 
+}
+
+.i7 { 
+  top: 1%; 
+  left: 26%; 
+  --r: -3deg; 
+  width: 150px;
+}
+.i8 { top: 40%; right: 20%; --r:-6deg; }
+/* SECTIONS */
+section {
+  padding: 140px 8vw;
+}
+.i9 { bottom: 1%; right: 5%; --r:-4deg; }
+.i10 { top: 4%; right: 30%; --r:5deg; }
+.i11 { bottom: 5%; left: 25%; --r:3deg; }
+.i12 { bottom: 40%; left: 20%; --r:3deg; }
+
+.project { position: relative; }
+
+.project .item {
+  position: absolute;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.project .cards-row,
+.project .card {
+  position: relative;
+  z-index: 1;
+}
 
 </style>
-</head>
+<!-- PROJECT MODAL -->
+<div id="project-modal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close">✕</button>
+
+    <h2 id="modal-title"></h2>
+    <p id="modal-body"></p>
+  </div>
+</div>
 
 <body>
 
 <!-- HERO -->
 <section class="hero">
   <img src="lips.png" class="item i1 float">
-  <img src="flower.png" class="item i2 float">
-  <img src="golf.png" class="item i3 float">
-  <img src="maze.png" class="item i4 float">
-  <img src="flower.png" class="item i5 float">
+  <img src="tsetseg.png" class="item i2 float">
+  <img src="tsagaan.png" class="item i3 float">
+  <img src="image.png" class="item i4 float">
+  <img src="tsetseg.png" class="item i5 float">
   <img src="tovch.png" class="item i6 float">
   <img src="doll.png" class="item i7 float">
-  <img src="morin.png" class="item i8 float">
-  <img src="girl1.png" class="item i9 float">
-  <img src="cherry.png" class="item i10 float">
+  <img src="tsaas.png" class="item i8 float">
+  <img src="cam.png" class="item i9 float">
+  <img src="tsagaan.png" class="item i10 float">
   <img src="hello.png" class="item i11 float">
-
+  <img src="butterfly.png" class="item i12 float">
   <div class="title-wrap">
-    <div class="title">Anujin<br>Ulziidelger.</div>
+    <div class="title">Anujin<br></div>
     <br>
     <br>
     <div class="buttons">
-      <a href="#about" class="pill">about me</a>
-      <a href="#portfolio" class="pill">my work</a>
-      <a href="#contact" class="pill">let’s collab</a>
+      <a href="#about" class="pill">About me</a>
+      <a href="#portfolio" class="pill">My work</a>
+      <a href="#contact" class="pill">Contact</a>
     </div>
   </div>
 </section>
@@ -508,94 +926,253 @@ section {
   <div class="about-text">
     <h2>about me ★</h2>
 
-    <p>
-  My name is Anujin Ulziidelger, and my work sits at the intersection of cognitive development and cultural context. I am interested in how people think, but more specifically, how culture shapes the way thinking develops, how attention is trained, how problem-solving is taught, and how knowledge is passed on across generations.
+     <p>
+  My name is Anujin, and I’m curious by nature and motivated by learning. I enjoy meaningful work, new challenges, and opportunities that help me grow as a person.
+
 </p>
 
 <p>
-  I completed my secondary education at the 21st School of Mongolia and later at Kentridge High School in the United States. Moving between these two systems made one thing clear to me early on: learning is never culturally neutral. The same cognitive skills are valued, trained, and expressed differently depending on history, tradition, and social structure. That realization became the foundation of my academic and project-based work.
+Are you talking about the girl who wears a black backpack, always brings a backup water bottle, and carries her heavy trusty notebook
+
 </p>
 
-<p>
-  I am the Founder and President of MindMaze, an educational initiative that integrates traditional puzzle-based practices with contemporary cognitive science. Through MindMaze, I established and equipped puzzle-learning spaces in five schools, engaging more than 3,600 elementary and middle school students. These spaces use culturally rooted mechanical puzzles not as nostalgia, but as cognitive tools to strengthen executive function, spatial reasoning, and sustained attention, while reinforcing the idea that cultural heritage can actively support modern learning.
-</p>
 
-<p>
-  Alongside this work, I authored a research study examining the effects of puzzle-based learning on executive function and cognitive performance. My research focuses on how tactile, culturally grounded learning interventions can enhance cognitive flexibility, planning, and focus, particularly in environments where digital learning dominates but does not always engage deeply.
-</p>
-
-<p>
-  In recognition of this work, I was selected as a TEDx Speaker, where I spoke about preserving cultural heritage through education and why cognition develops most meaningfully when learning extends beyond formal classrooms. My talk is expected to be published on the official TED Talks YouTube channel.
-</p>
-
-<p>
-  Beyond research, I am active in youth advocacy and international education. Through the East Asian Youth Network, I represented over 75,000 youth from East Asian Red Cross communities and moderated in-person youth conferences in Macau and Mongolia. In 2023, I was selected as a FLEX Capital City Representative and served as a Mongolian delegate at the U.S. Department of State’s Civic Education Selective Workshop, experiences that further shaped my interest in civic learning across cultures.
-</p>
-
-<p>
-  I am also an athlete. I competed as a varsity golf player at Kentridge High School and currently serve as a board member of the Mongolian Golf Association. Sports have reinforced my belief that cognition is not confined to classrooms; discipline, focus, and strategic thinking are learned through embodied experience as much as academic study.
-</p>
 
   </div>
 
-  <div class="collage">
+  <!-- <div class="collage">
     <div class="polaroid p1 float" style="--t:6s"><img src="yas.png"></div>
     <div class="polaroid p2 float" style="--t:5.5s"><img src="https://picsum.photos/300?11"></div>
     <div class="polaroid p3 float" style="--t:6.5s"><img src="anujin2.png"></div>
-  </div>
+  </div> -->
 </section>
 
 
-<!-- PORTFOLIO -->
+<section class="timeline-section" id="experience">
+
+  <div class="timeline">
+
+    <div class="timeline-item left">
+      <div class="content">
+        <span class="year" style="color: yellow;">2023 – 2024</span>
+        <h3>Start</h3>
+        <p>This is where it all began - my very first handmade paper, born from my own hands, hanging in the soft light as testament to curiosity, experimentation, and the timeless magic of creation.
+</p>
+      </div>
+        <div class="collage">
+    <div class="polaroid p2 float" style="--t:5.5s"><img src="ger3.jpg"></div>
+    <div class="polaroid p3 float" style="--t:6.5s"><img src="ger.jpg"></div>
+  </div>
+      
+    </div>
+
+    <div class="timeline-item right">
+      <img src="playtime.jpg" alt="">
+      <div class="content">
+        <span class="year" style="color: yellow;">2024</span>
+        <h3>Growth</h3>
+        <p>AT THE PLAYTIME
+An event where sustainability met community, over 100 participants discovered the power of recycled paper, transforming awareness into action.
+</p>
+      </div>
+    </div>
+
+    <div class="timeline-item left">
+      <div class="content">
+        <span class="year" style="color: yellow;">2025</span>
+        <h3>Book Festival Collaboration</h3>
+        <p>At Mongolia's annual Book Festival in the Central Square, I teamed up with @ulakhulan (131K followers) and two friends who share a passion for paper recycling. Together, we spent three days showcasing our handmade creations to thousands of visitors.
+</p>
+      </div>
+      <img src="festa.jpg" alt="">
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PORTFOLIO
 <section class="portfolio" id="portfolio">
   <h2 class="section-title">portfolio</h2>
 
   <div class="carousel">
     <div class="track">
 
-      <div class="card"><img src="red.jpg" alt=""></div>
-      <div class="card"><img src="mongol.jpg" alt=""></div>
-      <div class="card"><img src="anujin.png" alt=""></div>
-      <div class="card"><img src="medal.png" alt=""></div>
-      <div class="card"><img src="sports.jpg" alt=""></div>
+      <div class="card project-card" data-project="card">
+        <img src="card.jpg" alt="">
+      </div>
+
+      <div class="card"><img src="mod.jpg" ></div>
+      <div class="card"><img src="back.jpg"></div>
+      <div class="card"><img src="nom.jpg" ></div>
+      <div class="card"><img src="festa.jpg"></div>
 
 
-
-      <!-- duplicate for infinite scroll -->
-      <div class="card"><img src="red.jpg" alt=""></div>
-      <div class="card"><img src="mongol.jpg" alt=""></div>
-      <div class="card"><img src="anujin.png" alt=""></div>
-      <div class="card"><img src="medal.png" alt=""></div>
-      <div class="card"><img src="sports.jpg" alt=""></div>
+      <div class="card project-card" data-project="card">
+        <img src="card.jpg">
+      </div>
+      <div class="card"><img src="mod.jpg" ></div>
+      <div class="card"><img src="back.jpg"></div>
+      <div class="card"><img src="nom.jpg" ></div>
+      <div class="card"><img src="festa.jpg"></div>
 
 
 
     </div>
   </div>
-</section>
+</section>  -->
 
 
-<!-- SERVICES -->
-<section class="services">
-  <h2 class="section-title">what i can do</h2>
-  <div class="services-grid">
-    <div class="service-card">Content Creation</div>
-    <div class="service-card">Strategy & Planning</div>
-    <div class="service-card">Community Building</div>
-    <div class="service-card">Brand Amplification</div>
+<section class="project">
+  <img src="favs.png" class="item i1 float">
+  <img src="tsetseg.png" class="item i2 float">
+  <img src="cd.png" class="item i3 float">
+  <img src="image.png" class="item i4 float">
+  <img src="retro.png" class="item i5 float">
+  <img src="tovch.png" class="item i6 float">
+  <img src="medqe.png" class="item i7 float">
+  <img src="tsaas.png" class="item i8 float">
+  <img src="cam.png" class="item i9 float">
+  <img src="tsagaan.png" class="item i10 float">
+  <img src="star.png" class="item i11 float">
+  <img src="butterfly.png" class="item i12 float">
+  <div class="cards-row">
+  <div class="card project-card" data-project="Book-Festival">
+    <img src="book1.jpg" >
+    <button class="more-btn">Click for more</button>
+
   </div>
+
+  <div class="card project-card" data-project="card">
+    <img src="card.jpg" >
+    <button class="more-btn">Click for more</button>
+
+  </div>
+
+  <div class="card project-card" data-project="Piano">
+    <img src="piano.jpg" >
+    <button class="more-btn">Click for more</button>
+
+  </div>
+
+  <div class="card project-card" data-project="Playtime">
+    <img src="shiree.jpg" >
+    <button class="more-btn">Click for more</button>
+
+  </div>
+</div>
+<div class="cards-row">
+  <div class="card project-card" data-project="Bakery">
+    <img src="bakery.jpg" >
+    <button class="more-btn">Click for more</button>
+
+  </div>
+
+  <div class="card project-card" data-project="Calendar">
+    <img src="book.jpg" >
+    <button class="more-btn">Click for more</button>
+
+  </div>
+
+  <div class="card project-card" data-project="Sudoku">
+    <img src="sudoku.jpg" >
+    <button class="more-btn">Click for more</button>
+
+  </div>
+
+  <div class="card project-card" data-project="Recycle">
+    <img src="recycle.jpg" >
+    <button class="more-btn">Click for more</button>
+
+  </div>
+</div>
 </section>
+
+<div class="cards-row video-row">
+  <div class="card video-card">
+    <video src="video1.mp4" controls></video>
+  </div>
+
+  <div class="card video-card">
+    <video src="video2.mp4" controls></video>
+  </div>
+
+  <div class="card video-card">
+    <video src="video3.mp4" controls></video>
+  </div>
+</div>
+
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-inner">
     <img src="zahia.png" width="200" class="float">
     <div>
-      <h2 class="section-title">let’s collaborate</h2>
-      <a href="mailto:cyberareej@gmail.com" class="pill">cyberareej@gmail.com</a>
+      <h2 class="section-title" style="color: #1a1a1a;">Contact</h2>
+      <a href="mailto:cyberareej@gmail.com" class="pill">anujinmunkhbat0402@gmail.com</a>
     </div>
   </div>
 </section>
 
 </body>
+<script>
+const projects = {
+  "card": {
+    title: "52 cards, zero panic, 33 seconds",
+  },
+
+  "Book-Festival": {
+    title: "This bookmark accidentally turned me into a reader",
+  },
+    "Piano": {
+    title: "Once fluent in piano language",
+    
+  },
+    "Playtime": {
+    title: "PLAYTIME workshop, recycled creativity in action",
+    
+  },
+    "Bakery": {
+    title: "Oven on, stress off",
+    
+  },
+   "Calendar": {
+    title: "Handmade calendar, entirely my work",
+    
+  },
+   "Sudoku": {
+    title: "Sudoku lover, speed in top one percent",
+    
+  },
+   "Recycle": {
+    title: "Book festival, human FAQ edition",
+    
+  }
+};
+
+const modal = document.getElementById("project-modal");
+
+document.querySelectorAll(".project-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const key = card.dataset.project;
+    const p = projects[key];
+    if (!p) return;
+
+    document.getElementById("modal-title").textContent = p.title;
+
+    modal.classList.add("active");
+  });
+});
+
+document.querySelector(".modal-close").addEventListener("click", () => {
+  modal.classList.remove("active");
+});
+
+modal.addEventListener("click", e => {
+  if (e.target === modal) modal.classList.remove("active");
+});
+
+</script>
+
 </html>
